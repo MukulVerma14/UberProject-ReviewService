@@ -5,7 +5,6 @@ import com.example.UberReviewService.dtos.CreateReviewDto;
 import com.example.UberReviewService.dtos.ReviewDto;
 import com.example.UberReviewService.models.Review;
 import com.example.UberReviewService.services.ReviewService;
-import com.example.UberReviewService.services.ReviewServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +24,7 @@ public class ReviewController {
 
 
     //constructor injection
-    public ReviewController(ReviewServiceImpl reviewService,  CreateReviewDtoToReviewAdaptor createReviewDtoToReviewAdaptor) {
+    public ReviewController(ReviewService reviewService,  CreateReviewDtoToReviewAdaptor createReviewDtoToReviewAdaptor) {
         this.reviewService = reviewService;
         this.createReviewDtoToReviewAdaptor = createReviewDtoToReviewAdaptor;
     }
@@ -51,9 +50,10 @@ public class ReviewController {
 
     //get review by id
     @GetMapping("/{id}")
-    public Optional<Review> findReviewById(@PathVariable Long id) {
-        Optional<Review> review = reviewService.findReviewById(id);
-        return review;
+    public ResponseEntity<Review> findReviewById(@PathVariable Long id) {
+        return reviewService.findReviewById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //get list of all the reviews

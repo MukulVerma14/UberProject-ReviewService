@@ -1,8 +1,7 @@
 package com.example.UberReviewService.repositories;
 
-import com.example.UberReviewService.models.Driver;
+import com.example.uberprojectentityservice.models.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

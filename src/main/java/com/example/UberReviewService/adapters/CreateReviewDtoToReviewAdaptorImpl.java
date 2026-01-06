@@ -1,12 +1,11 @@
 package com.example.UberReviewService.adapters;
 
 import com.example.UberReviewService.dtos.CreateReviewDto;
-import com.example.UberReviewService.models.Booking;
-import com.example.UberReviewService.models.Review;
 import com.example.UberReviewService.repositories.BookingRepository;
+import com.example.uberprojectentityservice.models.Booking;
+import com.example.uberprojectentityservice.models.Review;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
 @Component
 public class CreateReviewDtoToReviewAdaptorImpl implements CreateReviewDtoToReviewAdaptor {
 
